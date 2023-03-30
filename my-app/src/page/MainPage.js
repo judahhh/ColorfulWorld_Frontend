@@ -1,11 +1,13 @@
 import Header from "../component/header/Header";
+import Card from "../component/Card";
 
+const MainPage = () => {
+  return (
+    <>
+      <Header />
+      <Card />
+    </>
+  );
+};
 
-const MainPage = () =>{
-
-    return (
-        <Header />
-    )
-}
-
-export default MainPage
+export default MainPage;
