@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyleLoginBtn = styled.p`
@@ -8,10 +9,12 @@ font-weight:bold;
 color:#F0DD22;
 `
 
-const LoginBtn = () =>{
+const HeaderLoginBtn = () =>{
     return(
-        <StyleLoginBtn>LOGIN</StyleLoginBtn>
+        <Link to="/login">
+            <StyleLoginBtn>LOGIN</StyleLoginBtn>
+        </Link>
     )
 }
 
-export default LoginBtn
+export default HeaderLoginBtn
