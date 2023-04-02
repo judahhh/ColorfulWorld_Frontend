@@ -38,7 +38,7 @@ const CardText = styled.p`
 
 const Img = styled.div``;
 
-const Card = () => {
+const IntroduceCard = () => {
   return (
     <>
       <Container>
@@ -50,4 +50,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default IntroduceCard;
