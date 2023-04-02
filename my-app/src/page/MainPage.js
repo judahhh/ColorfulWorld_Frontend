@@ -1,11 +1,11 @@
 import Header from "../component/header/Header";
-import Card from "../component/Card";
+import IntroduceCard from "../component/IntroduceCard";
 
 const MainPage = () => {
   return (
     <>
       <Header />
-      <Card />
+      <IntroduceCard />
     </>
   );
 };
