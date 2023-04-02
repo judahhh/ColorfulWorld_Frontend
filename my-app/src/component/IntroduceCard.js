@@ -42,12 +42,15 @@ const StyleSlideBtn = styled.button`
   width: 10px;
   height: 12px;
   border-radius: 50%;
-  background-color: darkgray;
+  background-color: #d9d9d9;
   border: none;
   display: inline-block;
   margin: 5px;
   :hover {
     cursor: pointer;
+  }
+  &.active {
+    background-color: #ebd500;
   }
 `;
 
@@ -73,8 +76,14 @@ const IntroduceCard = () => {
         )}
 
         <StyleBtnContainer>
-          <StyleSlideBtn onClick={() => setBtnState(1)}></StyleSlideBtn>
-          <StyleSlideBtn onClick={() => setBtnState(2)}></StyleSlideBtn>
+          <StyleSlideBtn
+            onClick={() => setBtnState(1)}
+            className={btnState == 1 ? "active" : ""}
+          ></StyleSlideBtn>
+          <StyleSlideBtn
+            onClick={() => setBtnState(2)}
+            className={btnState == 2 ? "active" : ""}
+          ></StyleSlideBtn>
         </StyleBtnContainer>
       </StyleIntroduceCard>
     </>
