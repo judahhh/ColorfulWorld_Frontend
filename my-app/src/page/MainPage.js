@@ -1,8 +1,15 @@
 import Header from "../component/header/Header";
-import IntroduceCard from "../component/IntroduceCard";
+import IntroduceCard from "../component/main/IntroduceCard";
 import FormBtn from "../component/commons/FormBtn";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
+const StyleMain = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const StyleBtnContainer = styled.div`
   display: flex;
@@ -19,10 +26,10 @@ const MainPage = () => {
   return (
     <>
       <Header />
-      <IntroduceCard />
-      <StyleBtnContainer onClick={gotochange}>
-        <FormBtn value="IMAGE" />
-      </StyleBtnContainer>
+      <StyleMain>
+        <IntroduceCard />
+        <FormBtn onClick={gotochange} value="IMAGE" />
+      </StyleMain>
     </>
   );
 };
