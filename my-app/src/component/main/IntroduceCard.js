@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import Ishihara1 from "./img/Ishihara_1.png";
-import Ishihara2 from "./img/Ishihara_2.png";
+import Ishihara1 from "../img/Ishihara_1.png";
+import Ishihara2 from "../img/Ishihara_2.png";
 
 const StyleIntroduceCard = styled.main`
   width: 480px;
@@ -13,8 +13,8 @@ const StyleIntroduceCard = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  margin-top: 30px;
+  /* margin: auto; */
+  margin: 30px;
 `;
 
 const StyleIntroduceTitle = styled.p`
