@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ImgBtn from "../commons/ImgBtn";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import axios from "axios"
+
 
 const StyleChangeCard = styled.main`
 width: 540px;
@@ -22,21 +24,37 @@ const StyledInput = styled.input`
 `
 
 const ChangeCard = () =>{
-    const [imageURL,setImageURL] = useState("")
     const inputRef = useRef();
     const ClickChangeBtn = () =>{//버튼 클릭시 Input실행함
         inputRef.current.click();
     }
 
     const UploadImage = () =>{//Input이 바뀌면 실행 서버 통신 예상
-        console.log(inputRef.current.value)
-        const file = inputRef.current.files[0]
-        console.log(file)
-    }
+        const files = inputRef.current.files[0];
+        TransferImg(files)
 
+    }
     const DropImg = (event) =>{//이미지를 drop 후 실행 함수
         event.preventDefault();
         const files = event.dataTransfer.files[0];
+        TransferImg(files)
+    }
+    const TransferImg = (files) =>{
+        let formData = new FormData();
+        formData.append("image",files);
+        formData.append('idx', 1);
+        axios.post("http://172.16.97.206:5002/colorization", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
     }
     return (
         <StyleChangeCard
