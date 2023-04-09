@@ -11,10 +11,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage/>} />
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path="/join" element={<JoinPage/>} />
-        <Route path="/change" element={<ChangePage/>}/>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
