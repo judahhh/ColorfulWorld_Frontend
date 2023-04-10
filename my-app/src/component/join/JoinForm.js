@@ -13,22 +13,58 @@ const StyleLoginForm = styled.form`
   height: 450px;
 `;
 
+const StyleEmailConfirmBtn = styled.button`
+  width: 100px;
+  height: 40px;
+  border: solid 1px #ebd500;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: white;
+  color: #ebd500;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const JoinForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [code, setCode] = useState("");
+  const [same, setSame] = useState(false);
+  let responseCode = "";
+
   const checkEmail = (e) => {
     if (email !== "" && !email.includes("@") && !email.includes("."))
       alert("올바르지 않은 이메일 형식입니다.");
   };
+  //이메일 인증코드 전송 버튼 클릭 시 함수
+  const emailConfirm = async (e) => {
+    await axios
+      .get(`/checkEmail?email=${email}`)
+      .then((response) => {
+        console.log(response);
+        responseCode = response.data;
+      })
+      .catch((err) => console.log(err));
+  };
 
-  const navigate = useNavigate();
+  //이메일 인증코드 동일한지 확인 함수
+  const emailCodeConfirm = () => {
+    if (code === responseCode) {
+      setSame(true);
+      alert("인증코드 확인이 완료되었습니다.");
+    }
+  };
 
   //회원가입 제출했을시 함수
   const onSubmit = async (e) => {
     e.preventDefault();
 
     if (email === "") alert("이메일을 입력해주세요.");
+    else if (same === false) alert("인증코드가 올바르지 않습니다.");
     else if (password === "") alert("비밀번호를 입력해주세요.");
     else if (passwordConfirm === "") alert("비밀번호 확인을 입력해주세요");
     else if (password !== passwordConfirm)
@@ -60,37 +96,47 @@ const JoinForm = () => {
   };
 
   return (
-    <StyleLoginForm onSubmit={onSubmit}>
-      <StyleInput
-        label="이메일"
-        placeholder="example@coloful.world"
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        onBlur={checkEmail}
-      />
-      <StyleInput
-        label="이메일 인증코드"
-        placeholder="이메일 인증 코드를 입력하세요"
-        type="text"
-      />
-      <StyleInput
-        label="비밀번호"
-        placeholder="********"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <StyleInput
-        label="비밀번호확인"
-        placeholder="********"
-        type="password"
-        value={passwordConfirm}
-        onChange={(e) => setPasswordConfirm(e.target.value)}
-      />
+    <>
+      <StyleLoginForm onSubmit={onSubmit}>
+        <StyleInput
+          label="이메일"
+          placeholder="example@coloful.world"
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={checkEmail}
+        />
+        <StyleEmailConfirmBtn onClick={emailConfirm}>
+          인증코드 전송
+        </StyleEmailConfirmBtn>
+        <StyleInput
+          label="이메일 인증코드"
+          placeholder="이메일 인증 코드를 입력하세요"
+          type="text"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+        <StyleEmailConfirmBtn onClick={emailCodeConfirm}>
+          인증코드 확인
+        </StyleEmailConfirmBtn>
+        <StyleInput
+          label="비밀번호"
+          placeholder="********"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <StyleInput
+          label="비밀번호확인"
+          placeholder="********"
+          type="password"
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
 
-      <FormBtn value="JOIN" />
-    </StyleLoginForm>
+        <FormBtn value="JOIN" />
+      </StyleLoginForm>
+    </>
   );
 };
 
