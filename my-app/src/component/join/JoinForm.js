@@ -35,15 +35,19 @@ const JoinForm = () => {
       alert("비밀번호와 비밀번호 확인이 같지 않습니다.\n다시 입력해주세요.");
     else if (checkEmail(email) === false)
       alert("이메일 형식을 다시 확인해주세요.");
-    else if (password !== "" && !(password.length < 8))
+    else if (password !== "" && password.length < 8)
       alert(
         "비밀번호는 영문자, 숫자, 특수문자를 포함한 8자리 이상이어야 합니다."
       );
     else {
       await axios
-        .post("/register", { email, password })
+        .post("/join", {
+          email: email,
+          password: password,
+          intensity: "1",
+        })
         .then((response) => {
-          console.log("서버에 전송");
+          console.log("서버에 전송", response);
           if (response.status === 200) {
             alert("회원가입에 성공하셨습니다. 로그인을 진행해주세요! ");
             navigate("/login");
