@@ -6,7 +6,6 @@ import ChangePage from "./page/ChangePage";//이미지 업로드 페이지
 import ResultPage from "./page/ResultPage";//결과 페이지
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 function App() {
   return (
     <BrowserRouter>
