@@ -36,17 +36,30 @@ const JoinForm = () => {
   const [same, setSame] = useState(false);
   let responseCode = "";
 
+  //이메일 유효성 검사(@와 . 있는지 체크)
   const checkEmail = (e) => {
     if (email !== "" && !email.includes("@") && !email.includes("."))
       alert("올바르지 않은 이메일 형식입니다.");
+  };
+  //비밀번호 유효성 검사(문자, 숫자, 특수문자를 포함한 8자리 이상인지 체크)
+  const checkPassword = (password) => {
+    const regexpPassword = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,}$/;
+    if (regexpPassword.test(password)) return true;
+    return false;
   };
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
     await axios
       .get(`/checkEmail?email=${email}`)
       .then((response) => {
-        console.log(response);
-        responseCode = response.data;
+        if (response.status === 409)
+          alert("이미 회원가입 완료한 이메일입니다.");
+        else {
+          alert(
+            "이메일 인증코드가 입력한 이메일로 전송되었습니다. 아래에 인증코드를 입력해주세요."
+          );
+          responseCode = response.data;
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -59,10 +72,8 @@ const JoinForm = () => {
     }
   };
 
-  //회원가입 제출했을시 함수
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
+  //모든 폼이 조건을 만족했는지 유효성 검사하는 함수
+  const finalValidation = () => {
     if (email === "") alert("이메일을 입력해주세요.");
     else if (same === false) alert("인증코드가 올바르지 않습니다.");
     else if (password === "") alert("비밀번호를 입력해주세요.");
@@ -71,11 +82,17 @@ const JoinForm = () => {
       alert("비밀번호와 비밀번호 확인이 같지 않습니다.\n다시 입력해주세요.");
     else if (checkEmail(email) === false)
       alert("이메일 형식을 다시 확인해주세요.");
-    else if (password !== "" && password.length < 8)
+    else if (checkPassword(password) === false)
       alert(
         "비밀번호는 영문자, 숫자, 특수문자를 포함한 8자리 이상이어야 합니다."
       );
-    else {
+    else return true;
+  };
+
+  //회원가입 제출했을시 함수
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (finalValidation() === true) {
       await axios
         .post("/join", {
           email: email,
@@ -83,7 +100,6 @@ const JoinForm = () => {
           intensity: "1",
         })
         .then((response) => {
-          console.log("서버에 전송", response);
           if (response.status === 200) {
             alert("회원가입에 성공하셨습니다. 로그인을 진행해주세요! ");
             navigate("/login");
