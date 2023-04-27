@@ -25,7 +25,7 @@ const MainPage = () => {
 
   //페이지 렌더링 시에 로그인이 안 되어 있을 경우 로그인 페이지로 이동
   useEffect(() => {
-    //로그인 확인할 때 사용하면 사용자를 구분하면 좋을거 같아요!
+    // 로그인 확인할 때 사용하면 사용자를 구분하면 좋을거 같아요!
     if (localStorage.getItem("loginState") !== true) {
       navigate("/login");
     }
