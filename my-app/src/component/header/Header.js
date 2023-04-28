@@ -24,16 +24,18 @@ const StyleHeader = styled.header`
 `;
 
 const Header = () => {
-  let isLogin;
+  let [isLogin, setIsLogin] = useState();
+
   useEffect(() => {
-    isLogin = localStorage.getItem("loginState");
-  }, []);
+    setIsLogin(localStorage.getItem("loginState"));
+    console.log(isLogin);
+  }, [isLogin]);
 
   return (
     <StyleHeader>
       <HomeBtn />
       <div className="LoginJoin">
-        {!isLogin ? (
+        {isLogin === null ? (
           <>
             <LoginBtn />
             <JoinBtn />
