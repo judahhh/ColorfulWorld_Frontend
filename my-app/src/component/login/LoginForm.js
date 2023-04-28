@@ -23,12 +23,12 @@ const LoginForm = () => {
     await axios
       .post("/login", body)
       .then((response) => {
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
         console.log(response);
         if (response.status === 200) {
           axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${response.headers.access_token}`;
+            "access_token"
+          ] = `${response.headers.access_token}`;
           localStorage.setItem("atk", response.headers.access_token);
           localStorage.setItem("rtk", response.headers.refresh_token);
           localStorage.setItem("loginState", true);
