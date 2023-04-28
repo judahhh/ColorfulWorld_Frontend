@@ -27,10 +27,9 @@ const MainPage = () => {
   //페이지 렌더링 시에 로그인이 안 되어 있을 경우 로그인 페이지로 이동
   useEffect(() => {
     setIsLogin(localStorage.getItem("loginState"));
-    if (!isLogin) {
-      navigate("/login");
-    }
-  }, []);
+    if (isLogin === null) navigate("/login");
+    console.log(isLogin);
+  }, [isLogin]);
 
   const gotochange = () => {
     navigate("/change");
