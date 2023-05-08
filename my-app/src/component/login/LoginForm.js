@@ -18,13 +18,10 @@ const LoginForm = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const [email, password] = event.target;
-    console.log(email.value, password.value);
     let body = { email: email.value, password: password.value };
     await axios
       .post("/login", body)
       .then((response) => {
-        // axios.defaults.withCredentials = true;
-        console.log(response);
         if (response.status === 200) {
           axios.defaults.headers.common[
             "access_token"
