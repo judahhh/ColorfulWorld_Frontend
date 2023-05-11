@@ -13,7 +13,7 @@ const StyleLoginForm = styled.form`
   height: 450px;
 `;
 
-const StyleEmailConfirmBtn = styled.button`
+const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
   width: 100px;
   height: 40px;
   border: solid 1px #ebd500;
@@ -34,7 +34,7 @@ const JoinForm = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [code, setCode] = useState("");
   const [same, setSame] = useState(false);
-  let responseCode = "";
+  const [responseCode, setResponseCode] = useState("");
 
   //이메일 유효성 검사(@와 . 있는지 체크)
   const checkEmail = (e) => {
@@ -50,15 +50,16 @@ const JoinForm = () => {
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
     await axios
-      .get(`/checkEmail?email=${email}`)
+      .get(`http://59.6.2.176:9876/checkEmail?email=${email}`)
       .then((response) => {
+        console.log(response);
+        setResponseCode(response.data);
         if (response.status === 409)
           alert("이미 회원가입 완료한 이메일입니다.");
         else {
           alert(
             "이메일 인증코드가 입력한 이메일로 전송되었습니다. 아래에 인증코드를 입력해주세요."
           );
-          responseCode = response.data;
         }
       })
       .catch((err) => console.log(err));
@@ -74,8 +75,9 @@ const JoinForm = () => {
 
   //모든 폼이 조건을 만족했는지 유효성 검사하는 함수
   const finalValidation = () => {
+    console.log(same, code, responseCode);
     if (email === "") alert("이메일을 입력해주세요.");
-    else if (same === false) alert("인증코드가 올바르지 않습니다.");
+    else if (responseCode !== code) alert("인증코드가 올바르지 않습니다.");
     else if (password === "") alert("비밀번호를 입력해주세요.");
     else if (passwordConfirm === "") alert("비밀번호 확인을 입력해주세요");
     else if (password !== passwordConfirm)
@@ -122,9 +124,8 @@ const JoinForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           onBlur={checkEmail}
         />
-        <StyleEmailConfirmBtn onClick={emailConfirm}>
-          인증코드 전송
-        </StyleEmailConfirmBtn>
+        <StyleEmailConfirmBtn onClick={emailConfirm} value="인증코드 전송" />
+
         <StyleInput
           label="이메일 인증코드"
           placeholder="이메일 인증 코드를 입력하세요"
@@ -132,9 +133,11 @@ const JoinForm = () => {
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-        <StyleEmailConfirmBtn onClick={emailCodeConfirm}>
-          인증코드 확인
-        </StyleEmailConfirmBtn>
+        <StyleEmailConfirmBtn
+          onClick={emailCodeConfirm}
+          value="인증코드 확인"
+        />
+
         <StyleInput
           label="비밀번호"
           placeholder="********"
