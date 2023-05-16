@@ -10,18 +10,19 @@ const StyleLoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 450px;
+  height: 600px;
+  padding: 20px;
 `;
 
 const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
   width: 100px;
-  height: 40px;
+  height: 30px;
   border: solid 1px #ebd500;
   font-family: "Noto Sans KR", sans-serif;
   background-color: white;
   color: #ebd500;
   border-radius: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   :hover {
     cursor: pointer;
   }
