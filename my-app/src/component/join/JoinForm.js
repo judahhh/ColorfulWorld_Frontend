@@ -4,6 +4,7 @@ import FormBtn from "../commons/FormBtn";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import JoinIntensity from "./JoinIntensity";
 
 const StyleLoginForm = styled.form`
   display: flex;
@@ -51,7 +52,7 @@ const JoinForm = () => {
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
     await axios
-      .get(`http://59.6.2.176:9876/checkEmail?email=${email}`)
+      .get(`/checkEmail?email=${email}`)
       .then((response) => {
         console.log(response);
         setResponseCode(response.data);
@@ -100,7 +101,7 @@ const JoinForm = () => {
         .post("/join", {
           email: email,
           password: password,
-          intensity: "1",
+          intensity: localStorage.getItem("index") + "",
         })
         .then((response) => {
           if (response.status === 200) {
@@ -113,7 +114,6 @@ const JoinForm = () => {
         .catch((error) => console.error("에러 : ", error));
     }
   };
-
   return (
     <>
       <StyleLoginForm onSubmit={onSubmit}>
@@ -154,6 +154,7 @@ const JoinForm = () => {
           onChange={(e) => setPasswordConfirm(e.target.value)}
         />
 
+        <JoinIntensity />
         <FormBtn value="JOIN" />
       </StyleLoginForm>
     </>
