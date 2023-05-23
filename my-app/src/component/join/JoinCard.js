@@ -3,7 +3,7 @@ import JoinForm from "./JoinForm";
 
 const StyleJoinCard = styled.main`
   width: 480px;
-  height: 640px;
+  height: 1070px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
