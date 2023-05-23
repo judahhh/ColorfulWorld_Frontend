@@ -16,6 +16,7 @@ const StyleChange = styled.div`
 
 const ChangePage = () => {
   const [imageUrl, setImageUrl] = useState();
+
   const navigate = useNavigate();
   const isLogin = localStorage.getItem("loginState");
   //페이지 렌더링 시에 로그인이 안 되어 있을 경우 로그인 페이지로 이동
@@ -23,9 +24,11 @@ const ChangePage = () => {
   //   if (!isLogin) navigate("/login");
   // }, [isLogin]);
 
+
   const getImageUrl = (image) => {
     setImageUrl(() => image);
   };
+
   return (
     <>
       <Header />
