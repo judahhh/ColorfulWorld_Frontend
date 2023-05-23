@@ -47,7 +47,7 @@ const JoinIntensity = () => {
         <StyleLabel>
           {intensityData1.map((v, i) => {
             return (
-              <StyleImgWrapper>
+              <StyleImgWrapper key={v.value}>
                 <StyleLabel>
                   <div style={{ textAlign: "center" }}>
                     {v.value}단계{" "}
@@ -58,7 +58,7 @@ const JoinIntensity = () => {
                       onChange={handleRadioBtn}
                     />
                   </div>
-                  <StyleImg src={v.img} alt="" width={100} />
+                  <StyleImg src={v.img} alt="강도 별 이미지" width={100} />
                 </StyleLabel>
               </StyleImgWrapper>
             );
@@ -70,7 +70,7 @@ const JoinIntensity = () => {
         {/* <label> */}
         {intensityData2.map((v, i) => {
           return (
-            <StyleImgWrapper>
+            <StyleImgWrapper key={v.value}>
               <StyleLabel>
                 <div style={{ textAlign: "center" }}>
                   {v.value}단계{" "}
