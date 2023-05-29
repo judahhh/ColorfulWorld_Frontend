@@ -1,8 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { lazy } from "react";
 import styled from "styled-components";
-import ErrorBoundary from "../../error/ErrorBoundary";
+import { BaseUrl } from "../../utils/SubmitUrl";
 const ImgBtn = lazy(() => import("../commons/ImgBtn"));
-const ResultContainer = lazy(() => import("./ResultContainer"));
 const ResultSurveyCard = lazy(() => import("./ResultSurveyCard"));
 
 const StyledSurvetAndBtn = styled.div`
@@ -10,19 +9,29 @@ const StyledSurvetAndBtn = styled.div`
   flex-direction: column;
 `;
 
+const StyleImg = styled.img`
+  width: 320px;
+  height: auto;
+  margin-right: 80px;
+`;
+
 /*fallback html 처리*/
-const ResultMain = () => {
-  const imageDownload = () => {};
+const ResultMain = ({ Resource }) => {
+  const imageUrl = Resource.image.read();
+  const imageDownload = () => {
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(imageUrl);
+    link.download = imageUrl.name;
+    link.click();
+  };
   return (
-    <ErrorBoundary fallback={<div>Loading...</div>}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ResultContainer />
-        <StyledSurvetAndBtn>
-          <ResultSurveyCard />
-          <ImgBtn label="DOWNLOAD" onClick={imageDownload} />
-        </StyledSurvetAndBtn>
-      </Suspense>
-    </ErrorBoundary>
+    <>
+      <StyleImg src={URL.createObjectURL(imageUrl)} alt="transfer" />
+      <StyledSurvetAndBtn>
+        <ResultSurveyCard />
+        <ImgBtn label="DOWNLOAD" clickfuc={imageDownload} />
+      </StyledSurvetAndBtn>
+    </>
   );
 };
 
