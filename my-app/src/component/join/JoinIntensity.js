@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import sample from "../img/sample.jpeg";
+import image_1 from "../img/image_1.png";
+import image_2 from "../img/image_2.png";
+import image_3 from "../img/image_3.png";
 
 const StyleSelectWrapper = styled.div`
   margin: 10px;
@@ -22,14 +24,14 @@ const StyleLabel = styled.label`
 const JoinIntensity = () => {
   const [index, setIndex] = useState("");
   const intensityData1 = [
-    { value: 1, img: sample },
-    { value: 2, img: sample },
-    { value: 3, img: sample },
+    { value: 1, img: image_1 },
+    { value: 2, img: image_2 },
+    { value: 3, img: image_3 },
   ];
   const intensityData2 = [
-    { value: 1, img: sample },
-    { value: 2, img: sample },
-    { value: 3, img: sample },
+    { value: 1, img: image_1 },
+    { value: 2, img: image_2 },
+    { value: 3, img: image_3 },
   ];
 
   const handleRadioBtn = (e) => {
