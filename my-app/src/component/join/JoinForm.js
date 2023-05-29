@@ -101,7 +101,10 @@ const JoinForm = () => {
         .post("/join", {
           email: email,
           password: password,
-          intensity: localStorage.getItem("index") + "",
+          intensity:
+            localStorage.getItem("index") === null
+              ? "0"
+              : localStorage.getItem("index") + "",
         })
         .then((response) => {
           if (response.status === 200) {
