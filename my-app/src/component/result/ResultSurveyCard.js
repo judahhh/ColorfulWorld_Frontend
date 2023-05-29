@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import OkBtn from "../commons/OkBtn";
+import axios from "axios";
+import { GetImgUrlToFile } from "../../utils/async/GetImgUrlToFile";
+import { BaseUrl } from "../../utils/SubmitUrl";
 
 const StyledResultSurveyCard = styled.section`
   width: 400px;
@@ -25,11 +28,24 @@ const StyledResultSurveyText = styled.div`
 `;
 
 const StyledResultSurveyBtn = styled.div`
-  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
   height: 40px;
 `;
 
 const ResultSurveyCard = () => {
+  const imageSatisfied = () => {
+    GetImgUrlToFile(BaseUrl + "/static/images/image.png").then((res) => {
+      const formData = new FormData();
+      formData.append("image", res);
+      axios.post("http://222.109.175.50:9876/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    });
+  };
   return (
     <StyledResultSurveyCard>
       <StyledResultSurveyText>
@@ -38,7 +54,8 @@ const ResultSurveyCard = () => {
         아래 버튼을 클릭해 주세요!
       </StyledResultSurveyText>
       <StyledResultSurveyBtn>
-        <OkBtn value={"만족"}></OkBtn>
+        <OkBtn value={"만족"} onClick={imageSatisfied} />
+        <OkBtn value={"불만족"} />
       </StyledResultSurveyBtn>
     </StyledResultSurveyCard>
   );

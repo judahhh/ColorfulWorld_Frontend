@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { ImageContext } from "../App";
 import Header from "../component/header/Header";
 import ChangeCard from "../component/change/ChangeCard";
 import styled from "styled-components";
 import ImgBtn from "../component/commons/ImgBtn";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StyleChange = styled.div`
   height: 800px;
@@ -15,25 +15,22 @@ const StyleChange = styled.div`
 `;
 
 const ChangePage = () => {
-  const [imageUrl, setImageUrl] = useState();
+  const { image } = useContext(ImageContext);
   const navigate = useNavigate();
-  const isLogin = localStorage.getItem("loginState");
-  //페이지 렌더링 시에 로그인이 안 되어 있을 경우 로그인 페이지로 이동
-  // useEffect(() => {
-  //   if (!isLogin) navigate("/login");
-  // }, [isLogin]);
-
-  const getImageUrl = (image) => {
-    setImageUrl(() => image);
+  const clickfuc = () => {
+    if (!image) {
+      alert("이미지를 업로드 해주세요!");
+      return;
+    }
+    navigate(`/result`);
   };
+
   return (
     <>
       <Header />
       <StyleChange>
-        <ChangeCard getImageUrl={getImageUrl} />
-        <Link to={`/result/${imageUrl}`}>
-          <ImgBtn label="RESULT" />
-        </Link>
+        <ChangeCard />
+        <ImgBtn label="RESULT" clickfuc={clickfuc} />
       </StyleChange>
     </>
   );
