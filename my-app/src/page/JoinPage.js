@@ -3,7 +3,7 @@ import JoinCard from "../component/join/JoinCard";
 import styled from "styled-components";
 
 const StyleLogin = styled.div`
-  height: 1150px;
+  height: 980px;
   display: flex;
   align-items: center;
   justify-content: center;

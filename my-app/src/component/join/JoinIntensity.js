@@ -40,10 +40,10 @@ const JoinIntensity = () => {
   return (
     <>
       <h5 style={{ margin: 10 }}>
-        색각이상 종류와 강도 선택 (숫자가 클수록 센 강도입니다.)
+        색상 변환 강도 선택 (숫자가 클수록 센 강도입니다.)
       </h5>
+      <h5 style={{ margin: 10 }}>제 1색각이상자</h5>
       <StyleSelectWrapper>
-        <h5 style={{ margin: 5 }}>제 1색각이상자</h5>
         <StyleLabel>
           {intensityData1.map((v, i) => {
             return (
@@ -65,10 +65,10 @@ const JoinIntensity = () => {
           })}
         </StyleLabel>
       </StyleSelectWrapper>
-      <StyleSelectWrapper>
-        <h5 style={{ margin: 5 }}>제 2색각이상자</h5>
-        {/* <label> */}
-        {intensityData2.map((v, i) => {
+      {/* <StyleSelectWrapper>
+        <h5 style={{ margin: 5 }}>제 2색각이상자</h5> */}
+      {/* <label> */}
+      {/* {intensityData2.map((v, i) => {
           return (
             <StyleImgWrapper key={v.value}>
               <StyleLabel>
@@ -85,9 +85,9 @@ const JoinIntensity = () => {
               </StyleLabel>
             </StyleImgWrapper>
           );
-        })}
-        {/* </label> */}
-      </StyleSelectWrapper>
+        })} */}
+      {/* </label> */}
+      {/* </StyleSelectWrapper> */}
     </>
   );
 };
