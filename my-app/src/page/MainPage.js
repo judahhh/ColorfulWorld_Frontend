@@ -7,10 +7,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const StyleMain = styled.div`
+  height: 800px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  @media (max-width: 786px) {
+    width: 100%;
+  }
 `;
 
 const StyleBtnContainer = styled.div`

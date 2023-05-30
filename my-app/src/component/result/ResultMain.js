@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BaseUrl } from "../../utils/SubmitUrl";
 const ImgBtn = lazy(() => import("../commons/ImgBtn"));
 const ResultSurveyCard = lazy(() => import("./ResultSurveyCard"));
 
@@ -17,19 +17,26 @@ const StyleImg = styled.img`
 
 /*fallback html 처리*/
 const ResultMain = ({ Resource }) => {
-  const imageUrl = Resource.image.read();
+  const navigate = useNavigate();
+  const imageFile = Resource.image.read();
   const imageDownload = () => {
+    //image 다운로드 함수
     let link = document.createElement("a");
-    link.href = URL.createObjectURL(imageUrl);
-    link.download = imageUrl.name;
+    link.href = URL.createObjectURL(imageFile);
+    link.download = imageFile.name;
     link.click();
+  };
+  const TransformAnotherImage = () => {
+    navigate("/change");
+    window.location.reload();
   };
   return (
     <>
-      <StyleImg src={URL.createObjectURL(imageUrl)} alt="transfer" />
+      <StyleImg src={URL.createObjectURL(imageFile)} alt="transfer" />
       <StyledSurvetAndBtn>
-        <ResultSurveyCard />
+        <ResultSurveyCard imageFile={imageFile} />
         <ImgBtn label="DOWNLOAD" clickfuc={imageDownload} />
+        <ImgBtn label="다른 이미지 변환" clickfuc={TransformAnotherImage} />
       </StyledSurvetAndBtn>
     </>
   );

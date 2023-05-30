@@ -7,25 +7,35 @@ import Ishihara2 from "../img/Ishihara_2.png";
 const StyleIntroduceCard = styled.main`
   width: 480px;
   height: 480px;
+  margin-bottom: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: auto; */
-  margin: 30px;
+  @media (max-width: 786px) {
+    width: 80%;
+    height: 80%;
+  }
 `;
 
 const StyleIntroduceTitle = styled.p`
   font-size: 28px;
   font-family: "Noto Serif KR", serif;
   color: #f0dd22;
+  @media (max-width: 786px) {
+    font-size: 20px;
+  }
 `;
 
 const StyleImg = styled.img`
   width: 260px;
   height: 260px;
+  @media (max-width: 786px) {
+    width: 50%;
+    height: 50%;
+  }
 `;
 const StyleCardText = styled.p`
   align-items: center;

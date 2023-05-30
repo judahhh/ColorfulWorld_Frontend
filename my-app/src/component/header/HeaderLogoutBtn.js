@@ -16,7 +16,7 @@ const HeaderLogoutBtn = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       axios
         .post(
-          "/out",
+          "http://43.201.158.240:8080/out",
           {},
           {
             headers: {

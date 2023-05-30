@@ -21,6 +21,12 @@ const StyleHeader = styled.header`
     justify-content: space-between;
     margin-right: 50px;
   }
+  @media (max-width: 786px) {
+    .LoginJoin {
+      width: 20%;
+      margin-right: 10%;
+    }
+  }
 `;
 
 const Header = () => {

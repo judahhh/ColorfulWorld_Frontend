@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import OkBtn from "../commons/OkBtn";
 import axios from "axios";
-import { GetImgUrlToFile } from "../../utils/async/GetImgUrlToFile";
-import { BaseUrl } from "../../utils/SubmitUrl";
 
 const StyledResultSurveyCard = styled.section`
   width: 400px;
@@ -34,17 +32,23 @@ const StyledResultSurveyBtn = styled.div`
   height: 40px;
 `;
 
-const ResultSurveyCard = () => {
+const ResultSurveyCard = ({ imageFile }) => {
   const imageSatisfied = () => {
-    GetImgUrlToFile(BaseUrl + "/static/images/image.png").then((res) => {
-      const formData = new FormData();
-      formData.append("image", res);
-      axios.post("http://222.109.175.50:9876/image", formData, {
+    const formData = new FormData();
+    const atk = localStorage.getItem("atk");
+    const rtk = localStorage.getItem("atk");
+    formData.append("image", imageFile);
+    axios
+      .post("http://59.6.2.176:9876/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          access_token: atk,
+          refresh_token: rtk,
         },
+      })
+      .then((res) => {
+        console.log(res);
       });
-    });
   };
   return (
     <StyledResultSurveyCard>

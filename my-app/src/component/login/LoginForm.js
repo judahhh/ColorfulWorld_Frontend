@@ -20,7 +20,7 @@ const LoginForm = () => {
     const [email, password] = event.target;
     let body = { email: email.value, password: password.value };
     await axios
-      .post("/login", body)
+      .post("http://43.201.158.240:8080/login", body)
       .then((response) => {
         if (response.status === 200) {
           axios.defaults.headers.common[
