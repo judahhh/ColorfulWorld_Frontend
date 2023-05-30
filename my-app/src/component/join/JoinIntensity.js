@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import sample from "../img/sample.jpeg";
+import image_1 from "../img/image_1.png";
+import image_2 from "../img/image_2.png";
+import image_3 from "../img/image_3.png";
 
 const StyleSelectWrapper = styled.div`
   margin: 10px;
@@ -22,14 +24,14 @@ const StyleLabel = styled.label`
 const JoinIntensity = () => {
   const [index, setIndex] = useState("");
   const intensityData1 = [
-    { value: 1, img: sample },
-    { value: 2, img: sample },
-    { value: 3, img: sample },
+    { value: 1, img: image_1 },
+    { value: 2, img: image_2 },
+    { value: 3, img: image_3 },
   ];
   const intensityData2 = [
-    { value: 1, img: sample },
-    { value: 2, img: sample },
-    { value: 3, img: sample },
+    { value: 1, img: image_1 },
+    { value: 2, img: image_2 },
+    { value: 3, img: image_3 },
   ];
 
   const handleRadioBtn = (e) => {
@@ -40,10 +42,10 @@ const JoinIntensity = () => {
   return (
     <>
       <h5 style={{ margin: 10 }}>
-        색각이상 종류와 강도 선택 (숫자가 클수록 센 강도입니다.)
+        색상 변환 강도 선택 (숫자가 클수록 센 강도입니다.)
       </h5>
+      <h5 style={{ margin: 10 }}>제 1색각이상자</h5>
       <StyleSelectWrapper>
-        <h5 style={{ margin: 5 }}>제 1색각이상자</h5>
         <StyleLabel>
           {intensityData1.map((v, i) => {
             return (
@@ -65,10 +67,10 @@ const JoinIntensity = () => {
           })}
         </StyleLabel>
       </StyleSelectWrapper>
-      <StyleSelectWrapper>
-        <h5 style={{ margin: 5 }}>제 2색각이상자</h5>
-        {/* <label> */}
-        {intensityData2.map((v, i) => {
+      {/* <StyleSelectWrapper>
+        <h5 style={{ margin: 5 }}>제 2색각이상자</h5> */}
+      {/* <label> */}
+      {/* {intensityData2.map((v, i) => {
           return (
             <StyleImgWrapper key={v.value}>
               <StyleLabel>
@@ -85,9 +87,9 @@ const JoinIntensity = () => {
               </StyleLabel>
             </StyleImgWrapper>
           );
-        })}
-        {/* </label> */}
-      </StyleSelectWrapper>
+        })} */}
+      {/* </label> */}
+      {/* </StyleSelectWrapper> */}
     </>
   );
 };

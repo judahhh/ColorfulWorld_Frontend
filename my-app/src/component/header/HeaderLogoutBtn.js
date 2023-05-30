@@ -33,18 +33,19 @@ const HeaderLogoutBtn = () => {
             localStorage.removeItem("loginState");
             alert("로그아웃 성공! 다음에 또 만나요");
             navigate("/login");
-          } else if (response.status === 401) {
-            localStorage.removeItem("atk");
-            localStorage.removeItem("rtk");
-            localStorage.removeItem("loginState");
-            alert("토큰이 유효하지 않아 강제 로그아웃 됩니다.");
-            navigate("/login");
           } else {
             alert("로그아웃에 실패하였습니다.");
           }
         })
         .catch((error) => {
           console.log(error);
+          if (error.response.status === 401) {
+            localStorage.removeItem("atk");
+            localStorage.removeItem("rtk");
+            localStorage.removeItem("loginState");
+            alert("토큰이 유효하지 않아 강제 로그아웃 됩니다.");
+            navigate("/login");
+          }
         });
     }
   };
