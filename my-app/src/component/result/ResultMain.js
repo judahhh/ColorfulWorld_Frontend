@@ -1,4 +1,5 @@
-import React, { lazy } from "react";
+import React, { lazy, useContext } from "react";
+import { ImageContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const ImgBtn = lazy(() => import("../commons/ImgBtn"));
@@ -17,6 +18,7 @@ const StyleImg = styled.img`
 
 /*fallback html 처리*/
 const ResultMain = ({ Resource }) => {
+  const { image } = useContext(ImageContext);
   const navigate = useNavigate();
   const imageFile = Resource.image.read();
   const imageDownload = () => {
@@ -27,11 +29,13 @@ const ResultMain = ({ Resource }) => {
     link.click();
   };
   const TransformAnotherImage = () => {
+    //새로운 이미지 변환시 돌아간다.
     navigate("/change");
     window.location.reload();
   };
   return (
     <>
+      <StyleImg src={URL.createObjectURL(image)} alt="origin" />
       <StyleImg src={URL.createObjectURL(imageFile)} alt="transfer" />
       <StyledSurvetAndBtn>
         <ResultSurveyCard imageFile={imageFile} />

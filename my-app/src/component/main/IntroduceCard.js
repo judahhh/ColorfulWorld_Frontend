@@ -16,7 +16,7 @@ const StyleIntroduceCard = styled.main`
   align-items: center;
   @media (max-width: 786px) {
     width: 80%;
-    height: 80%;
+    height: 70%;
   }
 `;
 
@@ -33,16 +33,20 @@ const StyleImg = styled.img`
   width: 260px;
   height: 260px;
   @media (max-width: 786px) {
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
   }
 `;
 const StyleCardText = styled.p`
+  font-size: 16px;
   align-items: center;
   color: black;
   font-family: "Noto Sans KR", sans-serif;
   padding: 0px;
   margin-bottom: 0px;
+  @media (max-width: 786px) {
+    font-size: 65%;
+  }
 `;
 const StyleBtnContainer = styled.div`
   text-align: center;

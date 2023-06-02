@@ -13,18 +13,20 @@ const StyleHeader = styled.header`
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 100px;
   justify-content: space-between;
   .LoginJoin {
     display: flex;
     align-items: center;
     width: 150px;
     justify-content: space-between;
-    margin-right: 50px;
+    margin-right: 25px;
   }
   @media (max-width: 786px) {
+    margin-bottom: 10vh;
     .LoginJoin {
       width: 20%;
-      margin-right: 10%;
+      margin-right: 5%;
     }
   }
 `;

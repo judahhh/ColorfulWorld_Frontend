@@ -11,6 +11,10 @@ const StyleJoinCard = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 786px) {
+    width: 80%;
+    height: 100%;
+  }
 `;
 const StyleJoinTitle = styled.p`
   font-size: 28px;

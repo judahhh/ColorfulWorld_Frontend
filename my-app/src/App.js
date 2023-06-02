@@ -12,26 +12,24 @@ export const ImageContext = createContext(null);
 function App() {
   const [image, setImage] = useState("");
   return (
-
-<ImageContext.Provider value={{ image, setImage }}>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<PrivateRoute auth={true} />}>
+    <ImageContext.Provider value={{ image, setImage }}>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<MainPage />} />
-        </Route>
-        <Route element={<PrivateRoute auth={false} />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/join" element={<JoinPage />} />
-        </Route>
-        <Route element={<PrivateRoute auth={true} />}>
-          <Route path="/change" element={<ChangePage />} />
-          <Route path="/result/:address" element={<ResultPage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
-      </Routes>
-    </BrowserRouter>
-</ImageContext.Provider>
-
+          <Route element={<PrivateRoute auth={false} />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/join" element={<JoinPage />} />
+          </Route>
+          <Route element={<PrivateRoute auth={true} />}>
+            <Route path="/change" element={<ChangePage />} />
+            <Route element={<PrivateRoute auth={image} />}>
+              <Route path="/result" element={<ResultPage />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ImageContext.Provider>
   );
 }
 

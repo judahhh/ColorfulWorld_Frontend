@@ -13,7 +13,6 @@ const StyledResultSurveyCard = styled.section`
   align-items: center;
   justify-content: center;
   margin-top: 100px;
-  margin-bottom: 25px;
 `;
 
 const StyledResultSurveyText = styled.div`
@@ -34,6 +33,7 @@ const StyledResultSurveyBtn = styled.div`
 
 const ResultSurveyCard = ({ imageFile }) => {
   const imageSatisfied = () => {
+    alert("감사합니다!");
     const formData = new FormData();
     const atk = localStorage.getItem("atk");
     const rtk = localStorage.getItem("atk");

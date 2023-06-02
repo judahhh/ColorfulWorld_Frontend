@@ -13,6 +13,10 @@ const StyleLoginForm = styled.form`
   justify-content: space-between;
   height: 600px;
   padding: 20px;
+  @media (max-width: 786px) {
+    height: 100%;
+    padding-right: 30px;
+  }
 `;
 
 const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
@@ -26,6 +30,10 @@ const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
   /* margin-bottom: 10px; */
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: 786px) {
+    width: 50%;
+    height: 70%;
   }
 `;
 

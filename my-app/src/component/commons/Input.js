@@ -19,6 +19,11 @@ const StyleInput = styled.input`
     outline: none;
     border-color: #f0dd22;
   }
+  @media (max-width: 786px) {
+    width: 200px;
+    font-size: 12px;
+    padding: 0 8px;
+  }
 `;
 
 const StyleLabel = styled.label`

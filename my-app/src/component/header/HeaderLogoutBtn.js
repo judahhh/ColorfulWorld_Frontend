@@ -8,6 +8,9 @@ const StyleJoinBtn = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #f0dd22;
+  @media (max-width: 786px) {
+    font-size: 12px;
+  }
 `;
 
 const HeaderLogoutBtn = () => {
