@@ -11,7 +11,7 @@ const StyleHomeBtn = styled.p`
   @media (max-width: 786px) {
     width: 100%;
     font-size: 100%;
-    margin: 20%;
+    margin-left: 20%;
   }
 `;
 

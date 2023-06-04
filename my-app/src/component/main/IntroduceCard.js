@@ -15,8 +15,8 @@ const StyleIntroduceCard = styled.main`
   flex-direction: column;
   align-items: center;
   @media (max-width: 786px) {
-    width: 80%;
-    height: 70%;
+    width: 80vw;
+    height: 85vw;
   }
 `;
 
@@ -33,8 +33,8 @@ const StyleImg = styled.img`
   width: 260px;
   height: 260px;
   @media (max-width: 786px) {
-    width: 40%;
-    height: 40%;
+    width: 33vw;
+    height: 33vw;
   }
 `;
 const StyleCardText = styled.p`

@@ -20,8 +20,8 @@ const StyleInput = styled.input`
     border-color: #f0dd22;
   }
   @media (max-width: 786px) {
-    width: 200px;
-    font-size: 12px;
+    width: 60vw;
+    font-size: 70%;
     padding: 0 8px;
   }
 `;

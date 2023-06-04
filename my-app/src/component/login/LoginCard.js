@@ -13,13 +13,16 @@ const StyleLoginCard = styled.main`
   align-items: center;
   @media (max-width: 786px) {
     width: 80%;
-    height: 70%;
+    height: 80vh;
   }
 `;
 const StyleLoginTitle = styled.p`
   font-size: 28px;
   font-family: "Noto Serif KR", serif;
   color: #f0dd22;
+  @media (max-width: 786px) {
+    font-size: 8vw;
+  }
 `;
 
 const LoginCard = () => {

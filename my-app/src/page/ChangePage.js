@@ -11,8 +11,9 @@ const StyleChange = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   @media (max-width: 786px) {
-    height: 100%;
+    height: 100vh;
     width: 100%;
   }
 `;
