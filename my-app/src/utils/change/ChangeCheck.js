@@ -1,7 +1,6 @@
 const ImgExtension = ["png", "jpeg", "jpg"];
 const CheckingImage = (files) => {
   //파일 확장자 확인하기위한 함수
-  console.log(files);
   const { type } = files;
   const slash = type.indexOf("/");
   const extension = type.slice(slash + 1, type.length);

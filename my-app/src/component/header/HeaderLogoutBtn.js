@@ -10,6 +10,7 @@ const StyleJoinBtn = styled.p`
   color: #f0dd22;
   @media (max-width: 786px) {
     font-size: 12px;
+    height: 3.3vh;
   }
 `;
 

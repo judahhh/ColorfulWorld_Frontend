@@ -6,10 +6,9 @@ const StyleLogin = styled.div`
   height: 980px;
   display: flex;
   justify-content: center;
-  align-items: center;
   @media (max-width: 786px) {
     width: 100%;
-    padding-top: 23vh;
+    padding-top: 10vh;
   }
 `;
 

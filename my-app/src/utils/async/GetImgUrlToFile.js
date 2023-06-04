@@ -1,6 +1,5 @@
 export const GetImgUrlToFile = async (url) => {
-  //이미지를 파일로 바꾸는 함수
-  console.log(url);
+  //이미지 url을 파일로 바꾸는 함수
   const res = await fetch(url);
   const data = await res.blob();
   const fileName = url.split("/").pop();

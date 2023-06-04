@@ -9,6 +9,7 @@ const StyleLoginBtn = styled.span`
   color: #f0dd22;
   @media (max-width: 786px) {
     font-size: 12px;
+    height: 3.3vh;
   }
 `;
 

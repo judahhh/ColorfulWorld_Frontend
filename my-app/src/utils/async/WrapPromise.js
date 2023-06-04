@@ -1,4 +1,5 @@
 export const wrapPromise = (promise) => {
+  //promise를 던지기 위한 함수
   let status = "pending";
   let result;
   let suspend = promise.then(

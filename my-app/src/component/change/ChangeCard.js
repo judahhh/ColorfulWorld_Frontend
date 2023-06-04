@@ -17,7 +17,7 @@ const StyleChangeCard = styled.main`
   align-items: center;
   margin-bottom: 50px;
   @media (max-width: 786px) {
-    width: 80%;
+    width: 90vw;
     height: 50vh;
   }
 `;
@@ -39,26 +39,26 @@ const ChangeCard = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [change, setChange] = useState(false);
   const inputRef = useRef();
-  const ClickChangeBtn = () => inputRef.current.click(); //버튼 클릭시 Input실행함
-  const UploadImg = () => {
-    console.log("click! action");
-    //Input이 바뀌면 실행 서버 통신 예상
-    const files = inputRef.current.files[0];
+  const ClickChangeBtn = () => {
+    inputRef.current.value = "";
+    inputRef.current.click();
+  }; //버튼 클릭시 Input실행함
+
+  const UploadImg = (dropImg = null) => {
+    const files = dropImg || inputRef.current.files[0];
     if (!files) return;
     setImage(() => files);
     ChangeCheck(files, setImgUrl);
-  };
+  }; //context에 이미지 저장, url을 이용해서 이미지 보여주기
 
   const DropImg = (event) => {
-    //이미지를 drop 후 실행 함수 이미지 압축 필요
+    //이미지를 drop 후 실행 함수
     event.preventDefault();
     setChange(false);
     const files = event.dataTransfer.files[0];
-    setImage(() => files);
-    ChangeCheck(files, setImgUrl);
+    UploadImg(files);
   };
 
-  //DragOver은 drag가
   return (
     <>
       <StyleChangeCard
@@ -83,7 +83,7 @@ const ChangeCard = () => {
           />
         )}
         <ImgBtn label="UPLOAD" clickfuc={ClickChangeBtn} />
-        <StyledInput type="file" onChange={UploadImg} ref={inputRef} />
+        <StyledInput type="file" onChange={() => UploadImg()} ref={inputRef} />
       </StyleChangeCard>
     </>
   );

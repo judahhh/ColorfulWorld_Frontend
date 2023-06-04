@@ -8,6 +8,7 @@ const StyleJoinBtn = styled.span`
   color: #f0dd22;
   @media (max-width: 786px) {
     font-size: 12px;
+    height: 3.5vh;
     margin-left: 25%;
   }
 `;

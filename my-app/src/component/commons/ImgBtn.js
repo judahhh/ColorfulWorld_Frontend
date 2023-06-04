@@ -10,7 +10,7 @@ const StyleImgBtn = styled.button`
     cursor: pointer;
   }
   @media (max-width: 786px) {
-    width: 60vw;
+    width: 80vw;
     height: 5vh;
   }
 `;

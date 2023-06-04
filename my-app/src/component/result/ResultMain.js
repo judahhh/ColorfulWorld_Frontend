@@ -6,14 +6,33 @@ const ImgBtn = lazy(() => import("../commons/ImgBtn"));
 const ResultSurveyCard = lazy(() => import("./ResultSurveyCard"));
 
 const StyledSurvetAndBtn = styled.div`
+  height: 280px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 786px) {
+    align-items: center;
+  }
+`;
+
+const StyleImgBox = styled.div`
+  display: flex;
+  @media (max-width: 786px) {
+    width: 80vw;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+  }
 `;
 
 const StyleImg = styled.img`
-  width: 320px;
-  height: auto;
+  width: auto;
+  height: 280px;
   margin-right: 80px;
+  @media (max-width: 786px) {
+    width: 36vw;
+    height: auto;
+    margin-right: 0;
+  }
 `;
 
 /*fallback html 처리*/
@@ -35,8 +54,10 @@ const ResultMain = ({ Resource }) => {
   };
   return (
     <>
-      <StyleImg src={URL.createObjectURL(image)} alt="origin" />
-      <StyleImg src={URL.createObjectURL(imageFile)} alt="transfer" />
+      <StyleImgBox>
+        <StyleImg src={URL.createObjectURL(image)} alt="origin" />
+        <StyleImg src={URL.createObjectURL(imageFile)} alt="transfer" />
+      </StyleImgBox>
       <StyledSurvetAndBtn>
         <ResultSurveyCard imageFile={imageFile} />
         <ImgBtn label="DOWNLOAD" clickfuc={imageDownload} />

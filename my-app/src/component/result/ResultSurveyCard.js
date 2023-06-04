@@ -12,7 +12,9 @@ const StyledResultSurveyCard = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  @media (max-width: 786px) {
+    width: 80vw;
+  }
 `;
 
 const StyledResultSurveyText = styled.div`
@@ -22,6 +24,10 @@ const StyledResultSurveyText = styled.div`
   font-size: 20px;
   text-align: center;
   color: #8a8a8a;
+  @media (max-width: 786px) {
+    width: 80%;
+    font-size: 100%;
+  }
 `;
 
 const StyledResultSurveyBtn = styled.div`
