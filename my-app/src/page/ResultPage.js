@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { useContext } from "react";
 import { ImageContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import Loading from "../component/loading/Loading";
 import ErrorBoundary from "../error/ErrorBoundary";
 import ImageChange from "../utils/async/ImageChange";
 import styled from "styled-components";
@@ -13,6 +14,11 @@ const StyledResult = styled.div`
   height: 800px;
   align-items: center;
   justify-content: center;
+  @media (max-width: 786px) {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+  }
 `;
 
 const ResultPage = () => {
@@ -26,8 +32,8 @@ const ResultPage = () => {
   return (
     <>
       <Header />
-      <ErrorBoundary fallback={<div>Loading...</div>}>
-        <Suspense fallback={<div>Loading...</div>}>
+      <ErrorBoundary fallback={<Loading />}>
+        <Suspense fallback={<Loading />}>
           <StyledResult>
             <ResultMain Resource={ImageChange(image)} />
           </StyledResult>

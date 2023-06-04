@@ -14,6 +14,10 @@ const StyleFormBtn = styled.button`
   }
   margin: 5px;
   padding: 10px;
+  @media (max-width: 786px) {
+    width: 70%;
+    margin-bottom: 30%;
+  }
 `;
 
 const FormBtn = (props) => {

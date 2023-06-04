@@ -13,6 +13,10 @@ const StyleLoginForm = styled.form`
   justify-content: space-between;
   height: 600px;
   padding: 20px;
+  @media (max-width: 786px) {
+    height: 100%;
+    padding-right: 30px;
+  }
 `;
 
 const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
@@ -26,6 +30,10 @@ const StyleEmailConfirmBtn = styled.input.attrs({ type: "button" })`
   /* margin-bottom: 10px; */
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: 786px) {
+    width: 50%;
+    height: 70%;
   }
 `;
 
@@ -52,7 +60,7 @@ const JoinForm = () => {
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
     await axios
-      .get(`/checkEmail?email=${email}`)
+      .get(`http://43.201.158.240:8080/checkEmail?email=${email}`)
       .then((response) => {
         console.log(response);
         setResponseCode(response.data);
@@ -98,7 +106,7 @@ const JoinForm = () => {
     e.preventDefault();
     if (finalValidation() === true) {
       await axios
-        .post("/join", {
+        .post("http://43.201.158.240:8080/join", {
           email: email,
           password: password,
           intensity:

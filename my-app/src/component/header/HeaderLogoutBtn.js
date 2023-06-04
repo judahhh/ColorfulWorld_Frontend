@@ -8,6 +8,10 @@ const StyleJoinBtn = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #f0dd22;
+  @media (max-width: 786px) {
+    font-size: 12px;
+    height: 3.3vh;
+  }
 `;
 
 const HeaderLogoutBtn = () => {
@@ -16,7 +20,7 @@ const HeaderLogoutBtn = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       axios
         .post(
-          "/out",
+          "http://43.201.158.240:8080/out",
           {},
           {
             headers: {

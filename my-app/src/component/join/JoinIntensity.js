@@ -13,6 +13,9 @@ const StyleImgWrapper = styled.div`
 `;
 const StyleImg = styled.img`
   margin: 5px;
+  @media (max-width: 786px) {
+    width: 40%;
+  }
 `;
 const StyleRadio = styled.input.attrs({ type: "radio" })`
   accent-color: brown;
