@@ -13,6 +13,9 @@ const StyleOkBtn = styled.button`
   :hover {
     cursor: pointer;
   }
+  @media (max-width: 786px) {
+    font-size: 70%;
+  }
 `;
 
 const OkBtn = (props) => {

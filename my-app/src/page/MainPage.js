@@ -11,6 +11,7 @@ const StyleMain = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 786px) {
+    padding-top: 10vh;
     height: 100vh;
     width: 100%;
   }

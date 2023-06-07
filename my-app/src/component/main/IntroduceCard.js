@@ -66,6 +66,9 @@ const StyleSlideBtn = styled.button`
   &.active {
     background-color: #ebd500;
   }
+  @media (max-width: 786px) {
+    height: 15px;
+  }
 `;
 
 const IntroduceCard = () => {

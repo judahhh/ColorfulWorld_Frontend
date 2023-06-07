@@ -20,7 +20,7 @@ const HeaderLogoutBtn = () => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
       axios
         .post(
-          "http://43.201.158.240:8080/out",
+          "https://api.colorfulworld.site/api/out",
           {},
           {
             headers: {
@@ -34,6 +34,7 @@ const HeaderLogoutBtn = () => {
           if (response.status === 200) {
             localStorage.removeItem("atk");
             localStorage.removeItem("rtk");
+            localStorage.removeItem("index");
             localStorage.removeItem("loginState");
             alert("로그아웃 성공! 다음에 또 만나요");
             navigate("/login");
@@ -46,6 +47,7 @@ const HeaderLogoutBtn = () => {
           if (error.response.status === 401) {
             localStorage.removeItem("atk");
             localStorage.removeItem("rtk");
+            localStorage.removeItem("index");
             localStorage.removeItem("loginState");
             alert("토큰이 유효하지 않아 강제 로그아웃 됩니다.");
             navigate("/login");
