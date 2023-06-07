@@ -45,7 +45,7 @@ const ResultSurveyCard = ({ imageFile }) => {
     const rtk = localStorage.getItem("atk");
     formData.append("image", imageFile);
     axios
-      .post("http://59.6.2.176:9876/image", formData, {
+      .post("https://colorfulworld.site/api/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           access_token: atk,

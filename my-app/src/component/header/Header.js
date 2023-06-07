@@ -3,6 +3,7 @@ import HomeBtn from "./HeaderHomeBtn";
 import LoginBtn from "./HeaderLoginBtn";
 import JoinBtn from "./HeaderJoinBtn";
 import LogoutBtn from "./HeaderLogoutBtn";
+import MyInfoBtn from "./HeaderMyInfoBtn";
 import { useState, useRef } from "react";
 import { useEffect } from "react";
 
@@ -80,7 +81,10 @@ const Header = () => {
             <JoinBtn />
           </>
         ) : (
-          <LogoutBtn />
+          <>
+            <MyInfoBtn />
+            <LogoutBtn />
+          </>
         )}
       </div>
     </StyleHeader>

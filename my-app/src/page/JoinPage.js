@@ -6,9 +6,9 @@ const StyleLogin = styled.div`
   height: 980px;
   display: flex;
   justify-content: center;
+  padding-top: 10vh;
   @media (max-width: 786px) {
     width: 100%;
-    padding-top: 10vh;
   }
 `;
 
