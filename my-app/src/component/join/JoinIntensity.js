@@ -76,6 +76,7 @@ const JoinIntensity = ({ setIntensity }) => {
         <h5 style={{ margin: 5 }}>제 2색각이상자</h5> */}
       {/* <label> */}
       {/* {intensityData2.map((v, i) => {
+
           return (
             <StyleImgWrapper key={v.value}>
               <StyleLabel>
@@ -95,6 +96,7 @@ const JoinIntensity = ({ setIntensity }) => {
         })} */}
       {/* </label> */}
       {/* </StyleSelectWrapper> */}
+
     </>
   );
 };
