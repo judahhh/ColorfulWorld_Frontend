@@ -45,6 +45,7 @@ const JoinForm = () => {
   const [code, setCode] = useState("");
   const [same, setSame] = useState(false);
   const [responseCode, setResponseCode] = useState("");
+  const [intensity, setIntensity] = useState(0);
 
   //이메일 유효성 검사(@와 . 있는지 체크)
   const checkEmail = (e) => {
@@ -60,7 +61,7 @@ const JoinForm = () => {
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
     await axios
-      .get(`http://43.201.158.240:8080/checkEmail?email=${email}`)
+      .get(`https://api.colorfulworld.site/api/checkEmail?email=${email}`)
       .then((response) => {
         console.log(response);
         setResponseCode(response.data);
@@ -106,13 +107,10 @@ const JoinForm = () => {
     e.preventDefault();
     if (finalValidation() === true) {
       await axios
-        .post("http://43.201.158.240:8080/join", {
+        .post("https://api.colorfulworld.site/api/join", {
           email: email,
           password: password,
-          intensity:
-            localStorage.getItem("index") === null
-              ? "0"
-              : localStorage.getItem("index") + "",
+          intensity: intensity,
         })
         .then((response) => {
           if (response.status === 200) {
@@ -164,8 +162,7 @@ const JoinForm = () => {
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
         />
-
-        <JoinIntensity />
+        <JoinIntensity setIntensity={setIntensity} />
         <FormBtn value="JOIN" />
       </StyleLoginForm>
     </>

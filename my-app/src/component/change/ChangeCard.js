@@ -26,7 +26,6 @@ const StyleChagneHeder = styled.p`
   font-size: 24px;
   margin-top: 20px;
   margin-bottom: 0px;
-
   @media (max-width: 786px) {
     font-size: 16px;
   }
@@ -40,7 +39,6 @@ const ChangeCard = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [change, setChange] = useState(false);
   const inputRef = useRef();
-
   const ClickChangeBtn = () => {
     inputRef.current.value = "";
     inputRef.current.click();

@@ -14,7 +14,8 @@ const StyleImgWrapper = styled.div`
 const StyleImg = styled.img`
   margin: 5px;
   @media (max-width: 786px) {
-    width: 40%;
+    width: 20%;
+    height: 20%;
   }
 `;
 const StyleRadio = styled.input.attrs({ type: "radio" })`
@@ -24,8 +25,9 @@ const StyleLabel = styled.label`
   cursor: pointer;
 `;
 
-const JoinIntensity = () => {
-  const [index, setIndex] = useState("");
+const JoinIntensity = ({ setIntensity }) => {
+  //My페이지 에서 사용할 수 있게 살짝 수정했습니다!
+  const [index, setIndex] = useState(localStorage.getItem("index") || 0);
   const intensityData1 = [
     { value: 1, img: image_1 },
     { value: 2, img: image_2 },
@@ -39,7 +41,7 @@ const JoinIntensity = () => {
 
   const handleRadioBtn = (e) => {
     setIndex(e.target.value);
-    localStorage.setItem("index", e.target.value);
+    setIntensity(() => e.target.value);
   };
 
   return (

@@ -24,14 +24,16 @@ const LoginForm = () => {
     const [email, password] = event.target;
     let body = { email: email.value, password: password.value };
     await axios
-      .post("http://43.201.158.240:8080/login", body)
+      .post("https://api.colorfulworld.site/api/login", body)
       .then((response) => {
         if (response.status === 200) {
           axios.defaults.headers.common[
             "access_token"
           ] = `${response.headers.access_token}`;
+          console.log(response);
           localStorage.setItem("atk", response.headers.access_token);
           localStorage.setItem("rtk", response.headers.refresh_token);
+          localStorage.setItem("index", response.headers.intensity);
           localStorage.setItem("loginState", true);
           alert("로그인 성공! 환영합니다.");
           navigate("/");
