@@ -2,7 +2,7 @@ import styled from "styled-components";
 import StyleInput from "../commons/Input";
 import FormBtn from "../commons/FormBtn";
 import { useState } from "react";
-import axios from "axios";
+import Spring from "../../utils/axios/Spring";
 import { useNavigate } from "react-router-dom";
 import JoinIntensity from "./JoinIntensity";
 
@@ -11,7 +11,6 @@ const StyleLoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 600px;
   padding: 20px;
   @media (max-width: 786px) {
     height: 100%;
@@ -60,8 +59,7 @@ const JoinForm = () => {
   };
   //이메일 인증코드 전송 버튼 클릭 시 함수
   const emailConfirm = async (e) => {
-    await axios
-      .get(`https://api.colorfulworld.site/api/checkEmail?email=${email}`)
+    await Spring.get(`/checkEmail?email=${email}`)
       .then((response) => {
         console.log(response);
         setResponseCode(response.data);
@@ -73,7 +71,13 @@ const JoinForm = () => {
           );
         }
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        if (error.response.status === 403) {
+          localStorage.setItem("atk", error.response.headers.access_token);
+        } else if (error.response.status === 409) {
+          alert("이미 회원가입 된 이메일 입니다!");
+        }
+      });
   };
 
   //이메일 인증코드 동일한지 확인 함수
@@ -106,12 +110,11 @@ const JoinForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (finalValidation() === true) {
-      await axios
-        .post("https://api.colorfulworld.site/api/join", {
-          email: email,
-          password: password,
-          intensity: intensity,
-        })
+      await Spring.post("/join", {
+        email: email,
+        password: password,
+        intensity: intensity,
+      })
         .then((response) => {
           if (response.status === 200) {
             alert("회원가입에 성공하셨습니다. 로그인을 진행해주세요! ");
@@ -120,7 +123,11 @@ const JoinForm = () => {
             alert("이미 회원가입 완료한 이메일입니다.");
           }
         })
-        .catch((error) => console.error("에러 : ", error));
+        .catch((error) => {
+          if (error.response.status === 403) {
+            localStorage.setItem("atk", error.response.headers.access_token);
+          }
+        });
     }
   };
   return (

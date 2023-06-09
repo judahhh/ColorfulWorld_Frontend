@@ -2,6 +2,7 @@ import styled from "styled-components";
 import StyleInput from "../commons/Input";
 import FormBtn from "../commons/FormBtn";
 import axios from "axios";
+import Spring from "../../utils/axios/Spring";
 import { useNavigate } from "react-router-dom";
 
 const StyleLoginForm = styled.form`
@@ -23,8 +24,7 @@ const LoginForm = () => {
     event.preventDefault();
     const [email, password] = event.target;
     let body = { email: email.value, password: password.value };
-    await axios
-      .post("https://api.colorfulworld.site/api/login", body)
+    await Spring.post("/login", body)
       .then((response) => {
         if (response.status === 200) {
           axios.defaults.headers.common[
@@ -37,13 +37,19 @@ const LoginForm = () => {
           localStorage.setItem("loginState", true);
           alert("로그인 성공! 환영합니다.");
           navigate("/");
-        } else if (response.response.data.code === "LOGIN-001") {
-          alert("일치하는 회원이 없습니다. 먼저 회원가입을 진행해주세요!");
-        } else if (response.response.data.code === "LOGIN-002") {
-          alert("비밀번호가 일치하지 않습니다.");
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.response.status === 403) {
+          localStorage.setItem("atk", error.response.headers.access_token);
+        } else if (error.response.status === 400) {
+          if (error.response.data.code === "LOGIN-001") {
+            alert("일치하는 회원이 없습니다. 먼저 회원가입을 진행해주세요!");
+          } else if (error.response.data.code === "LOGIN-002") {
+            alert("비밀번호가 일치하지 않습니다.");
+          }
+        }
+      });
   };
   return (
     <StyleLoginForm onSubmit={onSubmit}>
