@@ -3,7 +3,7 @@ import JoinForm from "./JoinForm";
 
 const StyleJoinCard = styled.main`
   width: 480px;
-  min-height: 900px;
+  min-height: 1050px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
@@ -13,6 +13,7 @@ const StyleJoinCard = styled.main`
   align-items: center;
   @media (max-width: 786px) {
     width: 80%;
+    height: 153vh;
   }
 `;
 const StyleJoinTitle = styled.p`

@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import Ishihara1 from "../img/Ishihara_1.png";
-import Ishihara2 from "../img/Ishihara_2.png";
+import main from "../img/main.png";
+import main2 from "../img/main2.png";
 
 const StyleIntroduceCard = styled.main`
   width: 480px;
@@ -45,12 +45,16 @@ const StyleCardText = styled.p`
   padding: 0px;
   margin-bottom: 0px;
   @media (max-width: 786px) {
-    font-size: 65%;
+    padding: 2%;
+    font-size: 25%;
   }
 `;
 const StyleBtnContainer = styled.div`
   text-align: center;
   margin: 20px;
+  @media (max-width: 786px) {
+    margin: 0;
+  }
 `;
 const StyleSlideBtn = styled.button`
   width: 10px;
@@ -67,7 +71,8 @@ const StyleSlideBtn = styled.button`
     background-color: #ebd500;
   }
   @media (max-width: 786px) {
-    height: 15px;
+    width: 25%;
+    height: 50%;
   }
 `;
 
@@ -78,17 +83,18 @@ const IntroduceCard = () => {
       <StyleIntroduceCard>
         <StyleIntroduceTitle>Welcome!</StyleIntroduceTitle>
         {btnState === 1 ? (
-          <StyleImg src={Ishihara1}></StyleImg>
+          <StyleImg src={main}></StyleImg>
         ) : (
-          <StyleImg src={Ishihara2}></StyleImg>
+          <StyleImg src={main2}></StyleImg>
         )}
         {btnState === 1 ? (
           <StyleCardText>
-            색각이상자 분들에게 보다 다채로운 세상을 선물하겠습니다.
+            색각이상자 분들에게 보다 <br /> 다채로운 세상을 선물하겠습니다.
           </StyleCardText>
         ) : (
           <StyleCardText>
-            일반인과 색각이상자 모두가 이질감 없이 함께 볼 수 있는 서비스!
+            일반인과 색각이상자 모두가
+            <br /> 이질감 없이 함께 볼 수 있는 서비스!
           </StyleCardText>
         )}
 

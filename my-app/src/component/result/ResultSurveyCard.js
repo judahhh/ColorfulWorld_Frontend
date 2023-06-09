@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import OkBtn from "../commons/OkBtn";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Spring from "../../utils/axios/Spring";
 
 const StyledResultSurveyCard = styled.section`
   width: 400px;
@@ -38,22 +39,34 @@ const StyledResultSurveyBtn = styled.div`
 `;
 
 const ResultSurveyCard = ({ imageFile }) => {
+  const navigate = useNavigate();
   const imageSatisfied = () => {
     alert("감사합니다!");
     const formData = new FormData();
     const atk = localStorage.getItem("atk");
     const rtk = localStorage.getItem("atk");
     formData.append("image", imageFile);
-    axios
-      .post("https://colorfulworld.site/api/image", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          access_token: atk,
-          refresh_token: rtk,
-        },
-      })
+    Spring.post("/image", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        access_token: atk,
+        refresh_token: rtk,
+      },
+    })
       .then((res) => {
         console.log(res);
+      })
+      .catch((error) => {
+        if (error.response.status === 403) {
+          localStorage.setItem("atk", error.response.headers.access_token);
+        } else if (error.response.status === 401) {
+          localStorage.removeItem("atk");
+          localStorage.removeItem("rtk");
+          localStorage.removeItem("index");
+          localStorage.removeItem("loginState");
+          alert("토큰이 만료되어 재로그인 해주세요.");
+          navigate("/login");
+        }
       });
   };
   return (

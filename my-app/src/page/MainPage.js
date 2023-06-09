@@ -12,25 +12,13 @@ const StyleMain = styled.div`
   align-items: center;
   @media (max-width: 786px) {
     padding-top: 10vh;
-    height: 100vh;
+    height: 100%;
     width: 100%;
   }
 `;
 
-const StyleBtnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px;
-`;
-
 const MainPage = () => {
   const navigate = useNavigate();
-  const isLogin = localStorage.getItem("loginState");
-  //페이지 렌더링 시에 로그인이 안 되어 있을 경우 로그인 페이지로 이동
-  // useEffect(() => {
-  //   if (!isLogin) navigate("/login");
-  // }, [isLogin]);
   const gotochange = () => {
     navigate("/change");
   };

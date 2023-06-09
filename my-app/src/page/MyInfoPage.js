@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../component/header/Header";
 import JoinIntensity from "../component/join/JoinIntensity";
 import FormBtn from "../component/commons/FormBtn";
-import axios from "axios";
+import Spring from "../utils/axios/Spring";
 
 const StyleMyIntensity = styled.div`
   width: 480px;
@@ -28,7 +28,8 @@ const StyleMyInfo = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 786px) {
-    height: 100vh;
+    padding-top: 10vh;
+    height: 100%;
     width: 100%;
   }
 `;
@@ -39,18 +40,23 @@ const MyInfoPage = () => {
     const body = {
       intensity: intensity,
     };
-    axios
-      .post("https://api.colorfulworld.site/api/update", body, {
-        headers: {
-          access_token: localStorage.getItem("atk"),
-          refresh_token: localStorage.getItem("rtk"),
-        },
-      })
+    Spring.post("/update", body, {
+      headers: {
+        access_token: localStorage.getItem("atk"),
+        refresh_token: localStorage.getItem("rtk"),
+      },
+    })
       .then((res) => {
         localStorage.setItem("index", res.headers.intensity);
         alert("정상적으로 변환되었습니다!");
       })
-      .then((error) => console.log(error));
+      .catch((error) => {
+        if (error.response.status === 403) {
+          localStorage.setItem("index", intensity);
+          localStorage.setItem("atk", error.response.headers.access_token);
+          alert("정상적으로 변환되었습니다!");
+        }
+      });
   };
   return (
     <>

@@ -4,6 +4,9 @@ import styled from "styled-components";
 import image_1 from "../img/image_1.png";
 import image_2 from "../img/image_2.png";
 import image_3 from "../img/image_3.png";
+import image_4 from "../img/image_4.png";
+import image_5 from "../img/image_5.png";
+import image_6 from "../img/image_6.png";
 
 const StyleSelectWrapper = styled.div`
   margin: 10px;
@@ -27,20 +30,20 @@ const StyleLabel = styled.label`
 
 const JoinIntensity = ({ setIntensity }) => {
   //My페이지 에서 사용할 수 있게 살짝 수정했습니다!
-  const [index, setIndex] = useState(localStorage.getItem("index") || 0);
+  const [index, setIndex] = useState(Number(localStorage.getItem("index")));
   const intensityData1 = [
     { value: 1, img: image_1 },
     { value: 2, img: image_2 },
     { value: 3, img: image_3 },
   ];
   const intensityData2 = [
-    { value: 1, img: image_1 },
-    { value: 2, img: image_2 },
-    { value: 3, img: image_3 },
+    { value: 1, img: image_4 },
+    { value: 2, img: image_5 },
+    { value: 3, img: image_6 },
   ];
 
   const handleRadioBtn = (e) => {
-    setIndex(e.target.value);
+    setIndex(() => Number(e.target.value));
     setIntensity(() => e.target.value);
   };
 
@@ -61,7 +64,7 @@ const JoinIntensity = ({ setIntensity }) => {
                     <StyleRadio
                       type="radio"
                       value={i}
-                      checked={index == i}
+                      checked={index === i}
                       onChange={handleRadioBtn}
                     />
                   </div>
@@ -72,10 +75,9 @@ const JoinIntensity = ({ setIntensity }) => {
           })}
         </StyleLabel>
       </StyleSelectWrapper>
-      {/* <StyleSelectWrapper>
-        <h5 style={{ margin: 5 }}>제 2색각이상자</h5> */}
-      {/* <label> */}
-      {/* {intensityData2.map((v, i) => {
+      <StyleSelectWrapper>
+        <h5 style={{ margin: 5 }}>제 2색각이상자</h5>
+        {intensityData2.map((v, i) => {
           return (
             <StyleImgWrapper key={v.value}>
               <StyleLabel>
@@ -84,7 +86,7 @@ const JoinIntensity = ({ setIntensity }) => {
                   <StyleRadio
                     type="radio"
                     value={i + 3}
-                    checked={index == i + 3}
+                    checked={index === i + 3}
                     onChange={handleRadioBtn}
                   />
                 </div>
@@ -92,9 +94,8 @@ const JoinIntensity = ({ setIntensity }) => {
               </StyleLabel>
             </StyleImgWrapper>
           );
-        })} */}
-      {/* </label> */}
-      {/* </StyleSelectWrapper> */}
+        })}
+      </StyleSelectWrapper>
     </>
   );
 };
