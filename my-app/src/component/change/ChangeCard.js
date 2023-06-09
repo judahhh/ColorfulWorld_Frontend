@@ -58,7 +58,6 @@ const ChangeCard = () => {
     const files = event.dataTransfer.files[0];
     UploadImg(files);
   };
-
   return (
     <>
       <StyleChangeCard
