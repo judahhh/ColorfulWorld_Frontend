@@ -9,19 +9,20 @@
 
 ## 서비스 예시
 
-시작 페이지
-
-<div style="display:fles">
+### 시작 페이지
+<div>
     <img src="./images/startPage1.png">
     <img src="./images/startPage2.png">
 </div>
-로그인 페이지, 회원가입 페이지
-<div style="display:fles">
+
+### 로그인 페이지, 회원가입 페이지
+<div>
     <img src="./images/loginPage.png">
     <img src="./images/joinPage.png">
 </div>
-이미지 변환 페이지, 결과 페이지
-<div style="display:fles">
+
+### 이미지 변환 페이지, 결과 페이지
+<div>
     <img src="./images/imgConvertPage.png">
     <img src="./images/resultPage.png">
 </div>
