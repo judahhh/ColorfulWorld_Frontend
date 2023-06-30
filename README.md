@@ -32,7 +32,7 @@
 <div style="display:flex">
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"> 
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> 
-  <img src="https://img.shields.io/badge/Javascript-61DAFB?style=for-the-badge&logo=Javascript&logoColor=white"> 
+  <img src="https://img.shields.io/badge/Javascript-61DQFB?style=for-the-badge&logo=Javascript&logoColor=white"> 
 
 </div>
 
