@@ -11,20 +11,20 @@
 
 ### 시작 페이지
 <div>
-    <img src="./images/startPage1.png">
-    <img src="./images/startPage2.png">
+    <img src="./images/startPage1.png" width="200px">
+    <img src="./images/startPage2.png" width="200px">
 </div>
 
 ### 로그인 페이지, 회원가입 페이지
 <div>
-    <img src="./images/loginPage.png">
-    <img src="./images/joinPage.png">
+    <img src="./images/loginPage.png" width="200px">
+    <img src="./images/joinPage.png" width="200px" >
 </div>
 
 ### 이미지 변환 페이지, 결과 페이지
 <div>
-    <img src="./images/imgConvertPage.png">
-    <img src="./images/resultPage.png">
+    <img src="./images/imgConvertPage.png" width="200px">
+    <img src="./images/resultPage.png" width="200px">
 </div>
 
 ## 발표 영상
