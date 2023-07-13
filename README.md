@@ -27,6 +27,10 @@
     <img src="./images/resultPage.png">
 </div>
 
+## 발표 영상
+
+
+
 ## 기술 스택
 
 <div style="display:flex">
