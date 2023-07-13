@@ -28,6 +28,7 @@
 </div>
 
 ## 발표 영상
+https://www.youtube.com/watch?v=zbB5P4mDULg&list=PLMr9Py20DqB8j8IIyIVHf9FBwlVhQTntM&index=41
 
 
 
